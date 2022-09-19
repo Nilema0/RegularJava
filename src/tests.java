@@ -157,4 +157,52 @@ public class tests {
     public void Test38(){
         Assert.assertFalse(metods.Task3("www.sait"));
     }
+    @Test
+    public void Test39(){
+        Assert.assertTrue(metods.Task4("C00l_Pass"));
+    }
+    @Test
+    public void Test40(){
+        Assert.assertTrue(metods.Task4("C00l_Pass23"));
+    }
+    @Test
+    public void Test41(){
+        Assert.assertTrue(metods.Task4("new_C00l_Pass"));
+    }
+    @Test
+    public void Test42(){
+        Assert.assertTrue(metods.Task4("Best_C00l_Pass"));
+    }
+    @Test
+    public void Test43(){
+        Assert.assertTrue(metods.Task4("SuperPas1"));
+    }
+    @Test
+    public void Test44(){
+        Assert.assertTrue(metods.Task4("SuperPas1_forever"));
+    }
+    @Test
+    public void Test45(){
+        Assert.assertFalse(metods.Task4("Superpas"));
+    }
+    @Test
+    public void Test46(){
+        Assert.assertFalse(metods.Task4("superpas1"));
+    }
+    @Test
+    public void Test47(){
+        Assert.assertFalse(metods.Task4("SUPERPASS1"));
+    }
+    @Test
+    public void Test48(){
+        Assert.assertFalse(metods.Task4("Super1"));
+    }
+    @Test
+    public void Test49(){
+        Assert.assertFalse(metods.Task4("COO1"));
+    }
+    @Test
+    public void Test50(){
+        Assert.assertFalse(metods.Task4("Coll-password"));
+    }
 }
