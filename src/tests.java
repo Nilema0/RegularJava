@@ -101,4 +101,60 @@ public class tests {
     public void Test24(){
         Assert.assertFalse(metods.Task2("e02fd0e400fd-090A-ca30-0d00-a0038ba0"));
     }
+    @Test
+    public void Test25(){
+        Assert.assertTrue(metods.Task3("http://www.example.com"));
+    }
+    @Test
+    public void Test26(){
+        Assert.assertTrue(metods.Task3("https://example.com"));
+    }
+    @Test
+    public void Test27(){
+        Assert.assertTrue(metods.Task3("amanda.com"));
+    }
+    @Test
+    public void Test28(){
+        Assert.assertTrue(metods.Task3("so-me.com"));
+    }
+    @Test
+    public void Test29(){
+        Assert.assertTrue(metods.Task3("https://www.google.com/search?q=a2wd&sxsrf=ALiCzsZagi"));
+    }
+    @Test
+    public void Test30(){
+        Assert.assertTrue(metods.Task3("port.com:1"));
+    }
+    @Test
+    public void Test31(){
+        Assert.assertTrue(metods.Task3("www.sait.com/papka#yakor"));
+    }
+    @Test
+    public void Test32(){
+        Assert.assertFalse(metods.Task3("Just Text, http://a.com"));
+    }
+    @Test
+    public void Test33(){
+        Assert.assertFalse(metods.Task3("http://a.com"));
+    }
+    @Test
+    public void Test34(){
+        Assert.assertFalse(metods.Task3("http://-aa.com"));
+    }
+    @Test
+    public void Test35(){
+        Assert.assertFalse(metods.Task3("http://a.com:"));
+    }
+    @Test
+    public void Test36(){
+        Assert.assertFalse(metods.Task3("www.sait.com/papka#"));
+    }
+    @Test
+    public void Test37(){
+        Assert.assertFalse(metods.Task3("www.sait.com/papka?"));
+    }
+    @Test
+    public void Test38(){
+        Assert.assertFalse(metods.Task3("www.sait"));
+    }
 }
