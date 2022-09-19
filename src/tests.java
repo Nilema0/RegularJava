@@ -29,4 +29,28 @@ public class tests {
         Assert.assertTrue(metods.Task1("0.1.2.3"));
     }
 
+    @Test
+    public void Test7(){
+        Assert.assertFalse(metods.Task1("256.0.0.0"));
+    }
+    @Test
+    public void Test8(){
+        Assert.assertFalse(metods.Task1("a.123.0.0"));
+    }
+    @Test
+    public void Test9(){
+        Assert.assertFalse(metods.Task1("0.12.134.5."));
+    }
+    @Test
+    public void Test10(){
+        Assert.assertFalse(metods.Task1("abc.def.ghi.jkl"));
+    }
+    @Test
+    public void Test11(){
+        Assert.assertFalse(metods.Task1("256.255.254.253"));
+    }
+    @Test
+    public void Test12(){
+        Assert.assertFalse(metods.Task1("12.13.14"));
+    }
 }
