@@ -1,14 +1,15 @@
 package org.example;
 
 /**
- * methods to check Ip, Guid, Url, password.
+ * Методы, проверяющие подходит ли введённая строка под шаблоны Ip, Guid, Url
+ * или удовлетвряет сложности для пароля.
  */
 public class Methods {
 
     /**
-     * method to check string matches Ip
-     * @param sentence Ip
-     * @return true if string matches Ip else return false
+     * проверяет введённую строку на соответствие шаблону Ip
+     * @param sentence строка
+     * @return возвращает true если входная трока соответсвует шаблону Ip, иначе возвращает false
      */
     public static boolean checkIp(String sentence){
         String regular = "^([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])\\." +
@@ -19,9 +20,9 @@ public class Methods {
     }
 
     /**
-     * method to check string matches Guid
-     * @param sentence Guid
-     * @return true if string matches Guid else return false
+     * проверяет введённую строку на соответствие шаблону Guid
+     * @param sentence строка
+     * @return возвращает true если входная трока соответсвует шаблону Guid, иначе возвращает false
      */
     public static boolean checkGuid(String sentence){
         String regular = "^([0-9A-Fa-f]{8})-([0-9A-Fa-f]{4})-" +
@@ -30,9 +31,9 @@ public class Methods {
     }
 
     /**
-     * method to check string matches Url
-     * @param sentence Url
-     * @return true if string matches Url else return false
+     * проверяет введённую строку на соответствие шаблону Url
+     * @param sentence строка
+     * @return возвращает true если входная трока соответсвует шаблону Url, иначе возвращает false
      */
     public static boolean checkUrl(String sentence){
         String regular = "^((https?)?:\\/\\/)?" +
@@ -47,11 +48,11 @@ public class Methods {
     }
 
     /**
-     * method to check string matches password
-     * @param sentence password
-     * @return true if string matches password else return false
+     * проверяет введённую строку на соответствие сложности пароля
+     * @param sentence строка
+     * @return возвращает true если входная трока соответсвует сложности пароля, иначе возвращает false
      */
-    public static boolean checkPassword(String sentence){
+    public static final boolean checkPassword(String sentence){
         String regular = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[\\w]{8,}$";
         return sentence.matches(regular);
     }
