@@ -148,8 +148,7 @@ public class Tests {
 
     @Test
     public void correctTestUrl5() {
-        Assert.assertTrue(Methods.checkUrl("https://www.google.com/search?q=a2wd&sxsrf=ALiCzsZagi"));
-    }
+        Assert.assertTrue(Methods.checkUrl("https://www.google.com/search?q=a2wd&sxsrf=ALiCzsZagi"));}
 
     @Test
     public void correctTestUrl6() {

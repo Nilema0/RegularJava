@@ -1,39 +1,34 @@
 package org.example;
 
 /**
- * Методы, проверяющие подходит ли введённая строка под шаблоны Ip, Guid, Url
+ * Методы, проверяющие подходит ли введённая строка под шаблоны IP, GUID, URL
  * или удовлетвряет сложности для пароля.
  */
 public class Methods {
 
     /**
-     * проверяет введённую строку на соответствие шаблону Ip
+     * проверяет введённую строку на соответствие шаблону IP
      * @param sentence строка
-     * @return возвращает true если входная трока соответсвует шаблону Ip, иначе возвращает false
+     * @return возвращает true, если входная строка соответсвует шаблону IP, иначе возвращает false
      */
     public static boolean checkIp(String sentence){
-        String regular = "^([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])\\." +
-                "([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])\\." +
-                "([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])\\." +
-                "([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])$";
-        return sentence.matches(regular);
+        final String part = "([1-9]\\d|[0-9]|25[0-5]|1[0-9][0-9]|2[0-4][0-9])";
+        return sentence.matches(part+"\\."+part+"\\."+part+"\\."+part+"$");
     }
 
     /**
-     * проверяет введённую строку на соответствие шаблону Guid
+     * проверяет введённую строку на соответствие шаблону GUID
      * @param sentence строка
-     * @return возвращает true если входная трока соответсвует шаблону Guid, иначе возвращает false
+     * @return возвращает true, если входная строка соответсвует шаблону GUID, иначе возвращает false
      */
     public static boolean checkGuid(String sentence){
-        String regular = "^([0-9A-Fa-f]{8})-([0-9A-Fa-f]{4})-" +
-                "([0-9A-Fa-f]{4})-([0-9A-Fa-f]{4})-([0-9A-Fa-f]{12})$";
-        return sentence.matches(regular);
+        return sentence.matches("^([0-9A-Fa-f]{8})-([0-9A-Fa-f]{4}-){3}([0-9A-Fa-f]{12})$");
     }
 
     /**
-     * проверяет введённую строку на соответствие шаблону Url
+     * проверяет введённую строку на соответствие шаблону URL
      * @param sentence строка
-     * @return возвращает true если входная трока соответсвует шаблону Url, иначе возвращает false
+     * @return возвращает true, если входная строка соответсвует шаблону URL, иначе возвращает false
      */
     public static boolean checkUrl(String sentence){
         String regular = "^((https?)?:\\/\\/)?" +
@@ -50,10 +45,9 @@ public class Methods {
     /**
      * проверяет введённую строку на соответствие сложности пароля
      * @param sentence строка
-     * @return возвращает true если входная трока соответсвует сложности пароля, иначе возвращает false
+     * @return возвращает true, если входная строка соответсвует сложности пароля, иначе возвращает false
      */
-    public static final boolean checkPassword(String sentence){
-        String regular = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[\\w]{8,}$";
-        return sentence.matches(regular);
+    public static boolean checkPassword(String sentence){
+        return sentence.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[\\w]{8,}$");
     }
 }
