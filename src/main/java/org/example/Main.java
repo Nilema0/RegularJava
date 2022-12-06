@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+import static org.example.Methods.*;
 
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
 
         switch (choice) {
             case 1:
-                if (Methods.checkIp(line)) {
+                if (checkIp(line)) {
                     System.out.println("Строка IP подходит под шаблон!");
                 }
                 else {
@@ -26,7 +27,7 @@ public class Main {
                 }
                 break;
             case 2:
-                if (Methods.checkGuid(line)){
+                if (checkGuid(line)){
                     System.out.println("Строка GUID подходит под шаблон!");
                 }
                 else {
@@ -34,7 +35,7 @@ public class Main {
                 }
                 break;
             case 3:
-                if (Methods.checkUrl(line)){
+                if (checkUrl(line)){
                     System.out.println("Строка URL подходит под шаблон!");
                 }
                 else {
@@ -42,7 +43,7 @@ public class Main {
                 }
                 break;
             case 4:
-                if (Methods.checkPassword(line)){
+                if (checkPassword(line)){
                     System.out.println("Пароль подходит под шаблон!");
                 }
                 else {

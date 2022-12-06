@@ -41,15 +41,15 @@ public class Methods {
      */
     public static boolean checkUrl(final String sentence) {
         LOG.info("Начался метод проверки URL. Входная строка: " + sentence);
-        String regular = "^((https?)?:\\/\\/)?" +
+        return sentence.matches(
+                "^((https?)?:\\/\\/)?" +
                 "([0-9a-zA-Z][0-9a-zA-Z-]{0,63}" +
                 "[0-9a-zA-Z]\\.)+" +
                 "(ru|com|net)" +
                 "(:\\d+)?" +
                 "((\\/[0-9a-zA-Z][0-9a-zA-Z-]{0,63}[0-9a-zA-Z])+)?" +
                 "(\\/[a-zA-Z]+\\?(\\w+=\\w+)(&\\w+=\\w+)*)?" +
-                "(#\\w+)?$";
-        return sentence.matches(regular);
+                "(#\\w+)?$");
     }
 
     /**
