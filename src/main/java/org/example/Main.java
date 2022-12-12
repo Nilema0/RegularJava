@@ -4,7 +4,7 @@ import java.util.Scanner;
 import static org.example.Methods.*;
 
 public class Main {
-    public static void main(String[] args) throws java.io.IOException {
+    public static void main(String[] args)  {
         System.out.println("Выберите действие: \n" +
                 "1. Проверить IP.\n" +
                 "2. Проверить GUID. \n" +
@@ -14,45 +14,38 @@ public class Main {
         Scanner in = new Scanner(System.in);
         val choice = in.nextLine();
 
-        if ((choice.matches("[1-4]"))) {
-
-            System.out.print("Введите строку: ");
-            val line = in.nextLine();
-
-            System.out.println(generateMessage(choice, line));
-
+        if (!(choice.matches("[1-4]"))) {
+            System.out.println("Необходимо ввести целое число в диапазоне от 1 до 4. ");
+            return;
         }
-        else System.out.println("Необходимо ввести целое число в диапазоне от 1 до 4. ");
+
+        System.out.print("Введите строку: ");
+        val line = in.nextLine();
+        System.out.println(generateMessage(choice, line));
     }
+
+    final static String correctAnswer = "Строка подходит под заданный шаблон. ";
+    final static String wrongAnswer = "Строка не подходит под заданный шаблон. ";
 
     public static String generateMessage(final String choice, final String line){
         switch (choice) {
-            case "1":
-                if (checkIp(line)) {
-                    return("Строка IP подходит под шаблон!");
-                } else {
-                    return("Строка IP не подходит под шаблон!");
-                }
-            case "2":
-                if (checkGuid(line)) {
-                    return("Строка GUID подходит под шаблон!");
-                } else {
-                    return("Строка GUID не подходит под шаблон!");
-                }
-            case "3":
-                if (checkUrl(line)) {
-                    return("Строка URL подходит под шаблон!");
-                } else {
-                    return("Строка URL не подходит под шаблон!");
-                }
-            case "4":
-                if (checkPassword(line)) {
-                    return("Пароль подходит под шаблон!");
-                } else {
-                    return("Пароль не подходит под шаблон!");
-                }
-            default:
-                return("something");
+            case "1"-> {
+                if (checkIp(line)) { return correctAnswer; }
+                else { return wrongAnswer; }
+            }
+            case "2"-> {
+                if (checkGuid(line)) { return correctAnswer; }
+                else { return wrongAnswer; }
+            }
+            case "3"-> {
+                if (checkUrl(line)) { return correctAnswer; }
+                else { return wrongAnswer;}
+            }
+            case "4"-> {
+                if (checkPassword(line)) { return correctAnswer; }
+                else { return wrongAnswer; }
+            }
+            default-> { return("something"); }
         }
     }
 }
