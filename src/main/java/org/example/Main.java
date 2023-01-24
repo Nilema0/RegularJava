@@ -1,51 +1,64 @@
 package org.example;
 
 import lombok.val;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.HashMap;
-import java.util.Scanner;
-
-import static org.example.Methods.*;
-
+import java.util.*;
 import java.util.function.Function;
 
 public class Main {
-
-    private static final HashMap<String, Function<String, Boolean>> answer = new HashMap<>();
-    private static final HashMap<String, String> addingToAnswer = new HashMap<>();
-
-    static {
-        answer.put("1", Methods::checkIp);
-        answer.put("2", Methods::checkGuid);
-        answer.put("3", Methods::checkUrl);
-        answer.put("4", Methods::checkPassword);
-
-        addingToAnswer.put("1", "Ip.");
-        addingToAnswer.put("2", "Guid.");
-        addingToAnswer.put("3", "Url.");
-        addingToAnswer.put("4", "пароля.");
-    }
+    private static final List<Triple<String, Function<String, Boolean>, String>> ANSWER = Collections.unmodifiableList(
+            Arrays.asList(
+                    ImmutableTriple.of("1", Methods::checkIp, "Ip"),
+                    ImmutableTriple.of("2", Methods::checkGuid, "Guid"),
+                    ImmutableTriple.of("3", Methods::checkUrl, "Url"),
+                    ImmutableTriple.of("2", Methods::checkPassword, "пароля")
+            )
+    );
 
     public static void main(String[] args) {
-        System.out.println("Выберите действие:\n" +
-                "1. Проверить IP.\n" +
-                "2. Проверить GUID.\n" +
-                "3. Проверить URL.\n" +
-                "4. Проверить пароль.");
-        val in = new Scanner(System.in);
-        val choice = in.nextLine();
+        String choice;
+        String lineToCheck;
 
-        if (!(choice.matches("[1-4]"))) {
-            System.out.println("Необходимо ввести целое число в диапазоне от 1 до 4. ");
+        if (args.length < 2) {
+            System.out.print("""
+                    Выберите действие:
+                    1. Проверить IP.
+                    2. Проверить GUID.
+                    3. Проверить URL.
+                    4. Проверить пароль.
+                    Ввод:\040""");
+            val in = new Scanner(System.in);
+            choice = in.nextLine();
+
+            System.out.print("Введите строку: ");
+            lineToCheck = in.nextLine();
+        } else{
+            choice = args[0];
+            lineToCheck = args[1];
+        }
+
+        if (!checker(choice)) {
+            System.out.println("Необходимо ввести целое число в диапазоне от 1 до 4.");
             return;
         }
 
-        System.out.print("Введите строку: ");
-        System.out.println(generateMessage(choice, in.nextLine()));
+        System.out.println(generateMessage(Integer.parseInt(choice) - 1, lineToCheck));
     }
 
-    public static String generateMessage(final String choice, final String line) {
-        if (answer.get(choice).apply(line)) return "Строка подходит под шаблон " + addingToAnswer.get(choice);
-        return "Строка не подходит под шаблон " + addingToAnswer.get(choice);
+    private static String generateMessage(final int choice, final String line) {
+        return String.format("Строка %sподходит под шаблон %s.",
+                ANSWER.get(choice).getMiddle().apply(line) ? "" : "не ",
+                ANSWER.get(choice).getRight());
+    }
+
+    private static Boolean checker(final String choice) {
+        for (val triple : ANSWER) {
+            if (triple.getLeft().equals(choice)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
